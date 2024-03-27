@@ -1,0 +1,9 @@
+package composite;
+
+public class Name {
+
+	private String Fname;
+	private String Minitial;
+	private String Lname;
+
+}
