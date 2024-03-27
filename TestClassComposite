@@ -1,0 +1,12 @@
+package composite;
+
+public class TestClassComposite {
+	
+public static void main(String[] args) {
+
+	Student[] students = new Student[5];
+		
+
+	
+	} // End of public main 
+} // end of public class 
