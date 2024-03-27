@@ -1,1 +1,12 @@
+package composite;
+
+public class Date {
+
+	
+	private Double Month;
+	private Double Day;
+	private Double Year;
+
+
+}
 
