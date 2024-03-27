@@ -1,0 +1,11 @@
+package composite;
+
+public class Student {
+
+	private String Name;
+	private Double DOB;
+	private Float Gpa;
+	private Integer Credit;
+	
+
+}
