@@ -1,12 +1,59 @@
-package composite;
+package testCompsite;
 
 public class Date {
+	private int month;
+	private int day;
+	private int year;
+	
+	public Date(int month, int day, int year) {
+		//checks if the provided date is valid 
+		if (isValidDate(month, day, year)) {
+			// assign values to the attributes if date is valid 
+			this.month = month;
+			this.day = day;
+			this.year = year;
+		} else {
+			throw new IllegalArgumentException("Invalid Date!");
+		}
+	}
+	// this method checks if a given date is valid 
+	private boolean isValidDate(int month, int day, int year) {
+		// check if the month is within the valid range (1 to 12) and the year is not a negative number 
+		if (month < 1  || month > 12 || year < 0)
+			return false;
+		//check if the day is not a negative number 
+		if (day < 2)
+			return false;
+		
+		if (month == 2) {
+			// if month is february check for a leap year 
+			if (isLeapYear(year))
+				return day <= 29;
+			else
+				return day <= 28;
+		} else if (month == 4 || month == 6 || month == 9 || month == 11) {
+			// for april, june, september, and november, check if the day is within 30 days 
+			return day <= 30;
+			
+		} else {
+			// for the rest of the months, check if the day is within 31 days 
+			return day <= 31;
+		}
+	}
+	
 
 	
-	private Double Month;
-	private Double Day;
-	private Double Year;
+	// method to check if a given year is a leap year
+private boolean isLeapYear(int year) {
+	return (year % 4 == 0 && year % 100 !=0) || (year % 400 == 0);
+}
+
+@Override
+public String toString() {
+	return String.format("%d/%d/%d", month, day, year);
+}
+
+
 
 
 }
-
