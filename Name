@@ -1,9 +1,22 @@
 package composite;
 
 public class Name {
+	private String firstName;
+	private String middleInitial;
+	private String lastName;
 
-	private String Fname;
-	private String Minitial;
-	private String Lname;
+public Name(String firstName, String middleInitial, String lastName) {
+	this.firstName = firstName;
+	this.middleInitial = middleInitial;
+	this.lastName = lastName;
+}
 
+public String toString() {
+	if (middleInitial != null && !middleInitial.isEmpty()) {
+		return firstName + " " + middleInitial.toUpperCase() + ". " + lastName;
+} 
+	else {
+return firstName + " " + lastName;
+}
+}
 }
