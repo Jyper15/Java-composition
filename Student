@@ -1,11 +1,89 @@
-package composite;
+package testCompsite;
 
 public class Student {
-
-	private String Name;
-	private Double DOB;
-	private Float Gpa;
-	private Integer Credit;
+	private Date dateofBirth;
+	private Name name;
+	private double gpa;
+	private int creditsTaken;
 	
+	
+	public Student(Date dateofBirth, Name name, double gpa, int creditsTaken) {
+		this.dateofBirth = dateofBirth;
+		this.name = name;
+		if (isValidGPA(gpa)) {
+			this.gpa = gpa;
+		} else {
+			throw new IllegalArgumentException("Invalid GPA.");
+		}
+		if (isValidCreditsTaken(creditsTaken)) {
+			this.creditsTaken = creditsTaken;
+		} else {
+			throw new IllegalArgumentException("Invalid credits taken.");
+		}
+		
+	}
 
+
+	public Date getDateofBirth() {
+		return dateofBirth;
+	}
+
+
+	public void setDateofBirth(Date dateofBirth) {
+		this.dateofBirth = dateofBirth;
+	}
+
+
+	public Name getName() {
+		return name;
+	}
+
+
+	public void setName(Name name) {
+		this.name = name;
+	}
+
+
+	public double getGpa() {
+		return gpa;
+	}
+
+
+	public void setGpa(double gpa) {
+		if (isValidGPA(gpa)) {
+		this.gpa = gpa;
+	}else {
+		throw new IllegalArgumentException("Invalid GPA.");
+	}
+	}
+	public int getCreditsTaken() {
+		return creditsTaken;
+	}
+
+
+	public void setCreditsTaken(int creditsTaken) {
+		if (isValidCreditsTaken(creditsTaken)) {
+		this.creditsTaken = creditsTaken;
+	} else {
+		throw new IllegalArgumentException("Invalid credits taken.");
+	}
+	}
+		private boolean isValidGPA(double gpa) {
+			return gpa >= 0 && gpa <= 5.0;
+		}
+	
+	private boolean isValidCreditsTaken(int creditsTaken) {
+		return creditsTaken >= 0 && creditsTaken <= 20;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Student: " + name + ", Date of Birth: " + dateofBirth + ", GPA: " + gpa + ", Credits Taken: " + creditsTaken;
+	}
+	
+	
 }
+	
+	
+	
