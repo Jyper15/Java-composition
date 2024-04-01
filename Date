@@ -16,44 +16,66 @@ public class Date {
 			throw new IllegalArgumentException("Invalid Date!");
 		}
 	}
-	// this method checks if a given date is valid 
-	private boolean isValidDate(int month, int day, int year) {
-		// check if the month is within the valid range (1 to 12) and the year is not a negative number 
-		if (month < 1  || month > 12 || year < 0)
-			return false;
-		//check if the day is not a negative number 
-		if (day < 2)
-			return false;
-		
-		if (month == 2) {
-			// if month is february check for a leap year 
-			if (isLeapYear(year))
-				return day <= 29;
-			else
-				return day <= 28;
-		} else if (month == 4 || month == 6 || month == 9 || month == 11) {
-			// for april, june, september, and november, check if the day is within 30 days 
-			return day <= 30;
-			
+
+	public int getMonth() {
+		return month;
+	}
+
+	public void setMonth(int month) {
+		if (isValidDate(month, this.day, this.year)) {
+		this.month = month;
 		} else {
-			// for the rest of the months, check if the day is within 31 days 
-			return day <= 31;
+			throw new IllegalArgumentException("Invalid month.");
+		}
+	}
+
+	public int getDay() {
+		return day;
+	}
+
+	public void setDay(int day) {
+		if (isValidDate(this.month, day, this.year)) {
+		this.day = day;
+	} else {
+		throw new IllegalArgumentException ("Invalid day. ");
+	}
+		
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		if (isValidDate (this.month,this.day, year)) {
+		this.year = year;
+		} else {
+			throw new IllegalArgumentException("Invalid year.");
 		}
 	}
 	
+	private boolean isValidDate(int month, int day, int year) {
+		if ( month < 1 || month > 12 || day < 1 || year < 0) {
+			return false;
+		}
+		
+		int maxDays = 31;
+		if (month == 4 || month == 6 || month == 9 || month == 11) {
+			maxDays = 30;
+		} else if (month == 2 ) {
+			maxDays = (year % 4 == 0 && (year % 100 != 0 || year % 400 ==0)) ? 29 : 28;
+			
+		}
+		return day <= maxDays;
+	}
 
+	@Override
+	public String toString() {
+		return String.format("%02d/%02d/%04d", month, day, year);
+	}
 	
-	// method to check if a given year is a leap year
-private boolean isLeapYear(int year) {
-	return (year % 4 == 0 && year % 100 !=0) || (year % 400 == 0);
-}
-
-@Override
-public String toString() {
-	return String.format("%d/%d/%d", month, day, year);
-}
-
-
+	
+	
 
 
 }
