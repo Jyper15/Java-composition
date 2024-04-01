@@ -73,7 +73,7 @@ public class Student {
 		}
 	
 	private boolean isValidCreditsTaken(int creditsTaken) {
-		return creditsTaken >= 0 && creditsTaken <= 20;
+		return creditsTaken >= 0 && creditsTaken <= 200;
 	}
 
 
